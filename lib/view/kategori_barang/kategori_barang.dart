@@ -31,6 +31,7 @@ class _KategoriBarangState extends State<KategoriBarang> {
 
   void deleteKategoriBarang(int id) async {
     await kategoriBarangController.deleteKategoriBarang(id);
+    getKategoriBarang();
   }
 
   @override
@@ -65,6 +66,8 @@ class _KategoriBarangState extends State<KategoriBarang> {
                 trailing: IconButton(
                   onPressed: () {
                     deleteKategoriBarang(e.idKategoriBarang);
+                    var snackBar = const SnackBar(content: Text('Data Berhasil Dihapus'));
+                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
                   },
                   icon: const Icon(Icons.delete, color: Colors.red),
                 ),
