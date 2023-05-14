@@ -30,6 +30,7 @@ class _AddKategoriBarangState extends State<AddKategoriBarang> {
       
       _formKey.currentState!.save();
       var kategoriBarang = KategoriBarangModel(
+        idKategoriBarang: 0,
         namaKategoriBarang: namaCtrl.text
       );
       await kategoriBarangController.addKategoriBarang(kategoriBarang);
@@ -79,7 +80,7 @@ class _AddKategoriBarangState extends State<AddKategoriBarang> {
                             child: ElevatedButton(
                               onPressed: (){
                                 addKategoriBarang();
-                                
+
                                 Navigator.pushReplacement(
                                       context,
                                       MaterialPageRoute(
