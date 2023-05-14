@@ -37,19 +37,19 @@ class KategoriBarangController {
       }
     } 
 
-    // Future updateKategoriBarang(KategoriBarangModel kategoriBarang) async {
-    //   var idKategoriBarang = kategoriBarang.idKategoriBarang;
-    //   var res = await http.post(Uri.parse("$apiUrl/barang/updateKB/$idKategoriBarang/"), 
-    //   body: {
-    //     "nama_kategori_barang" : kategoriBarang.namaKategoriBarang,
-    //   });
+    Future updateKategoriBarang(KategoriBarangModel kategoriBarang) async {
+      var idKategoriBarang = kategoriBarang.idKategoriBarang;
+      var res = await http.post(Uri.parse("$apiUrl/barang/updateKB/$idKategoriBarang/"), 
+      body: {
+        "nama_kategori_barang" : kategoriBarang.namaKategoriBarang,
+      });
 
-    //   if(res.statusCode == 200) {
-    //     return jsonDecode(res.body);
-    //   } else {
-    //     throw Exception("Gagal mengubah data kategori barang");
-    //   }
-    // }
+      if(res.statusCode == 200) {
+        return jsonDecode(res.body);
+      } else {
+        throw Exception("Gagal mengubah data kategori barang");
+      }
+    }
 
     Future deleteKategoriBarang(String id) async {
       var res = await http.post(Uri.parse("$apiUrl/barang/deleteKB/$id/"));
