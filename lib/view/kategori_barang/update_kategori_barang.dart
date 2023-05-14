@@ -4,14 +4,20 @@ import "package:apipoke_client/view/kategori_barang/kategori_barang.dart";
 import "package:apipoke_client/widget/input_text.dart";
 import "package:flutter/material.dart";
 
-class AddKategoriBarang extends StatefulWidget {
-  const AddKategoriBarang({super.key});
+class UpdateKategoriBarang extends StatefulWidget {
+
+  UpdateKategoriBarang({
+    super.key,
+    required this.kategoriBarang
+  });
+
+  KategoriBarangModel kategoriBarang;
 
   @override
-  State<AddKategoriBarang> createState() => _AddKategoriBarangState();
+  State<UpdateKategoriBarang> createState() => _UpdateKategoriBarangState();
 }
 
-class _AddKategoriBarangState extends State<AddKategoriBarang> {
+class _UpdateKategoriBarangState extends State<UpdateKategoriBarang> {
   final kategoriBarangController = KategoriBarangController();
 
   final namaCtrl = TextEditingController();
@@ -22,18 +28,20 @@ class _AddKategoriBarangState extends State<AddKategoriBarang> {
   void initState() {
     // TODO: implement initState
     super.initState();
+
+    namaCtrl.text = widget.kategoriBarang.namaKategoriBarang;
   }
 
-  void addKategoriBarang() async {
+  void updateKategoriBarang() async {
     if(_formKey.currentState!.validate()){
       debugPrint("Validate");
       
       _formKey.currentState!.save();
       var kategoriBarang = KategoriBarangModel(
-        idKategoriBarang: 0,
+        idKategoriBarang: widget.kategoriBarang.idKategoriBarang,
         namaKategoriBarang: namaCtrl.text
       );
-      await kategoriBarangController.addKategoriBarang(kategoriBarang);
+      await kategoriBarangController.updateKategoriBarang(kategoriBarang);
 
     }else{
       debugPrint("Not Validate");
@@ -79,15 +87,15 @@ class _AddKategoriBarangState extends State<AddKategoriBarang> {
                             height: 40,
                             child: ElevatedButton(
                               onPressed: (){
-                                addKategoriBarang();
+                                updateKategoriBarang();
+
+                                var snackBar = const SnackBar(content: Text('Data Berhasil Disimpan'));
+                                ScaffoldMessenger.of(context).showSnackBar(snackBar);
 
                                 Navigator.pushReplacement(
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) => const KategoriBarang()));
-
-                                var snackBar = const SnackBar(content: Text('Data Berhasil Disimpan'));
-                                ScaffoldMessenger.of(context).showSnackBar(snackBar);
                               },
                               child: const Text("Save", style: TextStyle(color: Colors.white),),
                             ),
