@@ -51,7 +51,7 @@ class KategoriBarangController {
       }
     }
 
-    Future deleteKategoriBarang(String id) async {
+    Future deleteKategoriBarang(int id) async {
       var res = await http.post(Uri.parse("$apiUrl/barang/deleteKB/$id"));
 
       if(res.statusCode == 200) {

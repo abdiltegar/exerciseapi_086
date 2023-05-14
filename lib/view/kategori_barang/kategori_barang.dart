@@ -29,6 +29,10 @@ class _KategoriBarangState extends State<KategoriBarang> {
     });
   }
 
+  void deleteKategoriBarang(int id) async {
+    await kategoriBarangController.deleteKategoriBarang(id);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,7 +64,7 @@ class _KategoriBarangState extends State<KategoriBarang> {
                 title: Text(e.namaKategoriBarang, style: const TextStyle(color: Colors.blue),),
                 trailing: IconButton(
                   onPressed: () {
-                    
+                    deleteKategoriBarang(e.idKategoriBarang);
                   },
                   icon: const Icon(Icons.delete, color: Colors.red),
                 ),
