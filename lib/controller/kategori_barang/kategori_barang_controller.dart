@@ -25,7 +25,7 @@ class KategoriBarangController {
     }
 
     Future addKategoriBarang(KategoriBarangModel kategoriBarang) async {
-      var res = await http.post(Uri.parse("$apiUrl/barang/addKB?_method=POST"), 
+      var res = await http.post(Uri.parse("$apiUrl/barang/addKB"), 
       body: {
         "nama_kategori_barang" : kategoriBarang.namaKategoriBarang,
       });
@@ -39,7 +39,7 @@ class KategoriBarangController {
 
     Future updateKategoriBarang(KategoriBarangModel kategoriBarang) async {
       var idKategoriBarang = kategoriBarang.idKategoriBarang;
-      var res = await http.post(Uri.parse("$apiUrl/barang/updateKB/$idKategoriBarang/"), 
+      var res = await http.post(Uri.parse("$apiUrl/barang/updateKB/$idKategoriBarang"), 
       body: {
         "nama_kategori_barang" : kategoriBarang.namaKategoriBarang,
       });
@@ -52,7 +52,7 @@ class KategoriBarangController {
     }
 
     Future deleteKategoriBarang(String id) async {
-      var res = await http.post(Uri.parse("$apiUrl/barang/deleteKB/$id/"));
+      var res = await http.post(Uri.parse("$apiUrl/barang/deleteKB/$id"));
 
       if(res.statusCode == 200) {
         return jsonDecode(res.body);

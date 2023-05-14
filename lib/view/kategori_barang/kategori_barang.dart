@@ -1,6 +1,7 @@
 import 'package:apipoke_client/controller/kategori_barang/kategori_barang_controller.dart';
 import 'package:apipoke_client/model/kategori_barang/kategori_barang_model.dart';
 import 'package:apipoke_client/view/kategori_barang/add_kategori_barang.dart';
+import 'package:apipoke_client/view/kategori_barang/update_kategori_barang.dart';
 import 'package:flutter/material.dart';
 
 class KategoriBarang extends StatefulWidget {
@@ -50,7 +51,7 @@ class _KategoriBarangState extends State<KategoriBarang> {
           padding: const EdgeInsets.all(1),
           child: InkWell(
             onLongPress: () {
-              // Navigator.push(context, MaterialPageRoute(builder: (context) => UpdatePage(contact: e, index: contactList.indexOf(e))));
+              Navigator.push(context, MaterialPageRoute(builder: (context) => UpdateKategoriBarang(kategoriBarang: e)));
             },
             child: Card(
               elevation: 2,
