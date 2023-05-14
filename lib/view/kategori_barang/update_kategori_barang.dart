@@ -53,7 +53,7 @@ class _UpdateKategoriBarangState extends State<UpdateKategoriBarang> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Tambah Kategori Barang"),
+        title: const Text("Edit Kategori Barang"),
       ),
       body: SizedBox(
         width: double.infinity,
